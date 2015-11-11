@@ -13,4 +13,8 @@ Lint/HandleExceptions:
 
 Style/FileName:
   Exclude:
-    - lib/dry-dependencies.rb
+    - lib/dry-constructor.rb
+
+Style/MethodName:
+  Exclude:
+    - lib/dry/constructor.rb
