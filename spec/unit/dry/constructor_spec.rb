@@ -11,7 +11,7 @@ RSpec.describe Dry::Constructor do
       end
     end
 
-    it 'assings each constructor arg to an ivar and defines private readers' do
+    it 'assigns each constructor arg to an ivar and defines private readers' do
       expect { instance.one }.to raise_error(NoMethodError)
       expect { instance.two }.to raise_error(NoMethodError)
       expect { instance.three }.to raise_error(NoMethodError)
@@ -28,7 +28,7 @@ RSpec.describe Dry::Constructor do
       end
     end
 
-    it 'assings each constructor arg to an ivar and defines protected readers' do
+    it 'assigns each constructor arg to an ivar and defines protected readers' do
       expect { instance.one }.to raise_error(NoMethodError)
       expect { instance.two }.to raise_error(NoMethodError)
       expect { instance.three }.to raise_error(NoMethodError)
@@ -45,7 +45,7 @@ RSpec.describe Dry::Constructor do
       end
     end
 
-    it 'assings each constructor arg to an ivar and defines public readers' do
+    it 'assigns each constructor arg to an ivar and defines public readers' do
       expect(instance.one).to eq(one)
       expect(instance.two).to eq(two)
       expect(instance.three).to eq(three)
