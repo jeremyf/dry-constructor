@@ -54,4 +54,25 @@ RSpec.describe Dry::Constructor do
       expect { instance.three }.to_not raise_error
     end
   end
+
+  describe '.define()' do
+    let(:instance) { klass.new(one, two, three: three) }
+    let(:klass) do
+      Class.new do
+        include(Dry::Constructor.define do
+          arg :one
+          arg :two
+          karg :three
+        end)
+      end
+    end
+    it 'assigns each constructor arg to an ivar and defines public readers' do
+      expect(instance.one).to eq(one)
+      expect(instance.two).to eq(two)
+      expect(instance.three).to eq(three)
+      expect { instance.one }.to_not raise_error
+      expect { instance.two }.to_not raise_error
+      expect { instance.three }.to_not raise_error
+    end
+  end
 end
