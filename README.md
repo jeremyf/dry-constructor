@@ -6,7 +6,9 @@
 <a href="https://codeclimate.com/github/dryrb/dry-constructor" target="_blank">![Code Climate](https://codeclimate.com/github/dryrb/dry-constructor/badges/gpa.svg)</a>
 <a href="http://inch-ci.org/github/dryrb/dry-constructor" target="_blank">![Documentation Status](http://inch-ci.org/github/dryrb/dry-constructor.svg?branch=master&style=flat)</a>
 
-A simple dependency injection library for Plain Old Ruby Objects
+A constructor library for Plain Old Ruby Objects (PORO).
+By itself this library may appear to be overkill.
+But when considering dependency injection, consistent initialize methods are important.
 
 ## Synopsis
 
@@ -38,6 +40,20 @@ CreateUserController.new(Response.new, Validator.new, Command.new)
 #      @response=#<struct Response status=nil>,
 #      @validator=#<struct Validator params=nil>,
 #      @command=#<struct Command params=nil>>
+```
+
+Reusability of method signatures can assist with interface development.
+
+```ruby
+ControllerInterface = [:response, :validator, :command]
+
+class CreateUserController
+  include Dry::Constructor(*ControllerInterface)
+end
+
+class UpdateUserController
+  include Dry::Constructor(*ControllerInterface)
+end
 ```
 
 ## License
